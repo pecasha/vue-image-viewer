@@ -60,9 +60,7 @@ export default {
               @close="imageViewerParams.visible=false"></image-viewer>
 ```
 
-#Props
-
-
+# Props
 | Name | Type | Default | Description | Required |
 |---|---|---|---|---|
 | visible | `Boolean` | `false` | Show or hide. | Yes |
