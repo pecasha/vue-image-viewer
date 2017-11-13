@@ -2,7 +2,8 @@ export default {
     name : "imageViewer",
     props : {
         visible : {
-            type : Boolean
+            type : Boolean,
+            default : false
         },
         index : {
             type : Number,
