@@ -61,6 +61,8 @@ export default {
 ```
 
 #Props
+
+
 | Name    | Type     | Default | Description                     | Required |
 |---------|----------|---------|---------------------------------|----------|
 | visible | `Boolean` | `false`  | Show or hide.                   | Yes      |
