@@ -62,7 +62,7 @@ export default {
 
 #Props
 | Name | Type | Default | Description | Required |
-|---|---|---|---|---|
+|------|------|---------|-------------|----------|
 | visible | `Boolean` | `false` | Show or hide. | Yes |
 | index | `Number` | `0` | Which image to show first. | No |
 | page | `Number` | `0` | The page of the thumbnail list. | No |
