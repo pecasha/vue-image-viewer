@@ -1,4 +1,4 @@
-[![npm version](https://img.shields.io/npm/v/vue-image-viewer.svg?style=flat-square)](https://github.com/ChiHai-Chuck/vue-image-viewer)
+[![npm version](https://img.shields.io/npm/v/vue-image-viewer.svg?style=flat-square)](https://www.npmjs.com/package/vue-image-viewer)
 [![MIT Licence](https://img.shields.io/npm/l/vue-image-viewer.svg?style=flat-square)](https://github.com/ChiHai-Chuck/vue-image-viewer/blob/master/LICENSE)
 
 # vue-image-viewer
