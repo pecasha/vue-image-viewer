@@ -14,6 +14,7 @@ npm install vue-image-viewer --save
 # Usage
 ```
 import imageViewer from "vue-image-viewer";
+import "vue-image-viewer/vue-image-viewer.css";
 
 export default {
     name : "demo",
