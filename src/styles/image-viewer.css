@@ -5,6 +5,7 @@
     url('../assets/fonts/vue-image-viewer-icon.ttf?t=1510573199985') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
     url('../assets/fonts/vue-image-viewer-icon.svg?t=1510573199985#vue-image-viewer-icon') format('svg'); /* iOS 4.1- */
 }
+
 .image-viewer-icon-close:before { content: "\e621"; }
 .image-viewer-icon-left:before { content: "\e626"; }
 .image-viewer-icon-right:before { content: "\e627"; }
@@ -95,8 +96,12 @@
 }
 .image-viewer-content-prev > i,
 .image-viewer-content-next > i {
+    position: absolute;
+    top: 0;
+    bottom: 0;
     width: 30px;
     height: 30px;
+    margin: auto;
     line-height: 30px;
     font-size: 30px;
     color: #fff;
@@ -186,8 +191,14 @@
 }
 .image-viewer-nav-prev > i,
 .image-viewer-nav-next > i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 20px;
     height: 20px;
+    margin: auto;
     line-height: 20px;
     font-size: 20px;
     color: #fff;
