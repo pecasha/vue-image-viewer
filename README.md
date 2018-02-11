@@ -1,8 +1,8 @@
 [![npm version](https://img.shields.io/npm/v/vue-image-viewer.svg?style=flat-square)](https://www.npmjs.com/package/vue-image-viewer)
-[![MIT Licence](https://img.shields.io/npm/l/vue-image-viewer.svg?style=flat-square)](https://github.com/ChiHai-Chuck/vue-image-viewer/blob/master/LICENSE)
+[![MIT Licence](https://img.shields.io/npm/l/vue-image-viewer.svg?style=flat-square)](https://github.com/chiHai-chuck/vue-image-viewer/blob/master/LICENSE)
 
 # vue-image-viewer
-a simple and lightweight picture viewer.
+a simple and lightweight picture viewer. [Demo](https://github.com/chiHai-chuck/vue-image-viewer/blob/master/dist/index.html)
 
 >一个用于Vue2.0的简单且轻量化的图片查看器。
 
@@ -16,6 +16,8 @@ npm install vue-image-viewer --save
 import imageViewer from "vue-image-viewer";
 import "vue-image-viewer/lib/vue-image-viewer.css";
 
+Vue.use(imageViewer);
+
 export default {
     name : "demo",
     components : {
@@ -24,7 +26,6 @@ export default {
     data() {
         return {
             imageViewerParams : {
-                visible : false,
                 index : 0,
                 page : 0,
                 images : [
@@ -44,27 +45,23 @@ export default {
         }
     },
     methods : {
-        imageViewShow(index) {
-            if(index !== void 0) {
-                this.imageViewerParams.index = index;
-                this.imageViewerParams.visible = true;
-            }
+        imageViewShow() {
+            this.$imageViewer.show(this.imageViewerParams);
+        },
+        imageViewHide() {
+            this.$imageViewer.hide();
         }
     }
 }
 ```
 ```
-<image-viewer :images="imageViewerParams.images"
-              :index="imageViewerParams.index"
-              :visible="imageViewerParams.visible"
-              :page="imageViewerParams.page"
-              @close="imageViewerParams.visible=false"></image-viewer>
+<button @close="imageViewShow">open</button>
+<button @close="imageViewHide">close</button>
 ```
 
 # Props
 | Name | Type | Default | Description | Required |
 |---|---|---|---|---|
-| visible | `Boolean` | `false` | Show or hide. | Yes |
 | index | `Number` | `0` | Which image to show first. | No |
 | page | `Number` | `0` | The page of the thumbnail list. | No |
 | images | `Array` | `[]` | Image list. | Yes |
