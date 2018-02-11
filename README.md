@@ -2,7 +2,7 @@
 [![MIT Licence](https://img.shields.io/npm/l/vue-image-viewer.svg?style=flat-square)](https://github.com/chiHai-chuck/vue-image-viewer/blob/master/LICENSE)
 
 # vue-image-viewer
-a simple and lightweight picture viewer. [Demo](https://github.com/chiHai-chuck/vue-image-viewer/blob/master/dist/index.html)
+a simple and lightweight picture viewer. [Demo](https://chihai-chuck.github.io/vue-image-viewer/dist/index.html)
 
 >一个用于Vue2.0的简单且轻量化的图片查看器。
 
