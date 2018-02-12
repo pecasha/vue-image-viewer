@@ -7,9 +7,9 @@
 <script>
     import Vue from "vue";
 
-    import vueImageViewer from '../../lib/vue-image-viewer';
+    // import vueImageViewer from '../../lib/vue-image-viewer';
     import "../../lib/vue-image-viewer.css";
-    // import vueImageViewer from '../../src/main.js';
+    import vueImageViewer from '../../src/main.js';
 
     Vue.use(vueImageViewer);
 
@@ -43,7 +43,6 @@
         methods: {
             open() {
                 this.$imageViewer.show({
-                    visible: this.visible,
                     images: this.images
                 });
             }

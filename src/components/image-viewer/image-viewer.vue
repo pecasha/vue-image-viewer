@@ -3,10 +3,10 @@
         <div class="image-viewer" v-if="visible">
             <i class="image-viewer-close image-viewer-icon-close" @click="visible=false"></i>
             <div class="image-viewer-content">
-                <img :src="images[imgIndex].url" :alt="images[imgIndex].name?images[imgIndex].name:'图片'+(imgIndex+1)" :width="imgStyle.width" :height="imgStyle.height" v-show="imgVisible">
+                <img :src="images[index].url" :alt="images[index].name?images[index].name:'图片'+(index+1)" :width="imgStyle.width" :height="imgStyle.height" v-show="imgVisible">
                 <div class="image-viewer-info">
-                    <p>{{images[imgIndex].name?images[imgIndex].name:'图片'+(imgIndex+1)}}({{(imgIndex+1)+'/'+images.length}})</p>
-                    <a :href="images[imgIndex].url" target="_blank">下载原图</a>
+                    <p>{{images[index].name?images[index].name:'图片'+(index+1)}}({{(index+1)+'/'+images.length}})</p>
+                    <a :href="images[index].url" target="_blank">下载原图</a>
                 </div>
                 <div class="image-viewer-content-prev" @click="imgChange('prev')"><i class="image-viewer-icon-left"></i></div>
                 <div class="image-viewer-content-next" @click="imgChange('next')"><i class="image-viewer-icon-right"></i></div>
@@ -15,7 +15,7 @@
                 <div class="image-viewer-nav-prev" @click="pageChange('prev')"><i class="image-viewer-icon-left"></i></div>
                 <div class="image-viewer-nav-main">
                     <div class="image-viewer-nav-thumb">
-                        <div v-for="(il,i) in images" :class="{active:i===imgIndex}" :alt="il.name?il.name:'图片'+(i+1)" :title="il.name?il.name:'图片'+(i+1)" :style="{backgroundImage:'url('+il.url+')'}" @click="imgChange(i)"></div>
+                        <div v-for="(il,i) in images" :class="{active:i===index}" :alt="il.name?il.name:'图片'+(i+1)" :title="il.name?il.name:'图片'+(i+1)" :style="{backgroundImage:'url('+il.url+')'}" @click="imgChange(i)"></div>
                     </div>
                 </div>
                 <div class="image-viewer-nav-next" @click="pageChange('next')"><i class="image-viewer-icon-right"></i></div>
@@ -27,20 +27,6 @@
 <script>
     export default {
         name: "imageViewer",
-        props: {
-            index: {
-                type: Number,
-                default: 0
-            },
-            page: {
-                type: Number,
-                default: 0
-            },
-            images: {
-                type: Array,
-                default: () => []
-            }
-        },
         data() {
             return {
                 config: {
@@ -53,8 +39,9 @@
                 },
                 visible: false,
                 imgVisible: false,
-                imgIndex: 0,
-                imgPage: 0
+                index: 0,
+                page: 0,
+                images: []
             }
         },
         watch: {
@@ -63,14 +50,12 @@
                     if(val) document.body.style.overflow = "hidden";
                     else document.body.style.overflow = "";
 
-                    this.imgIndex = this.index;
-                    this.imgPage = this.page;
                     this.imgLoad(this.imgSize);
                 } else {
                     this.visible = false;
                 }
             },
-            imgIndex() {
+            index() {
                 this.imgStyle = {
                     width: "auto",
                     height: "auto"
@@ -83,8 +68,10 @@
             imgLoad(callback) {
                 setTimeout(() => {
                     const $img = document.querySelector(".image-viewer-content > img");
+                    let count = 0;
                     const timer = setInterval(() => {
-                        if($img.complete) {
+                        count++;
+                        if($img.complete || count) {
                             callback();
                             clearInterval(timer);
                         }
@@ -122,22 +109,22 @@
             imgChange(action) {
                 const length = this.images.length - 1;
                 if(action === "prev") {
-                    this.imgIndex = this.imgIndex-- <= 0 ? 0 : this.imgIndex;
-                    if(this.imgIndex < this.imgPage * 8) this.imgPageChange("prev");
+                    this.index = this.index-- <= 0 ? 0 : this.index;
+                    if(this.index < this.page * 8) this.pageChange("prev");
                 } else if(action === "next") {
-                    this.imgIndex = this.imgIndex++ >= length ? length : this.imgIndex;
-                    if(this.imgIndex >= (this.imgPage + 1) * 8) this.imgPageChange("next");
+                    this.index = this.index++ >= length ? length : this.index;
+                    if(this.index >= (this.page + 1) * 8) this.pageChange("next");
                 } else if(!isNaN(action)) {
-                    this.imgIndex = action <= 0 ? 0 : action >= length ? length : action;
+                    this.index = action <= 0 ? 0 : action >= length ? length : action;
                 }
             },
             pageChange(action) {
                 const length = this.images.length - 1;
-                if(action === "prev" && this.imgPage * 8 >= 8) this.imgPage--;
-                else if(action === "next" && (this.imgPage * 8 < length && length - this.imgPage * 8 > 8)) this.imgPage++;
-                document.querySelector(".image-viewer-nav-thumb > div:first-child").style.marginLeft = -(document.querySelector(".image-viewer-nav-thumb").width * this.imgPage) + "px";
+                if(action === "prev" && this.page * 8 >= 8) this.page--;
+                else if(action === "next" && (this.page * 8 < length && length - this.page * 8 > 8)) this.page++;
+                document.querySelector(".image-viewer-nav-thumb > div:first-child").style.marginLeft = -(document.querySelector(".image-viewer-nav-thumb").width * this.page) + "px";
             }
         }
     }
 </script>
-<style src="../../styles/image-viewer.css"></style>
+<style lang="less" src="../../styles/image-viewer.less"></style>

@@ -1,24 +1,16 @@
 import Vue from 'vue';
 import ImageViewer from './image-viewer.vue';
 
-ImageViewer.newInstance = (properties = {}, props = {}) => {
+ImageViewer.newInstance = (props = {}) => {
     const Instance = new Vue({
-        data: Object.assign({}, properties, {}),
         render(h) {
-            let vnode = null;
-
-            if(this.render) {
-                vnode = h(ImageViewer, {
-                    props
-                }, [this.render(h)]);
-            } else {
-                vnode = h(ImageViewer, {
-                    props
-                });
-            }
             return h("div", {
                 "class": "vue-image-viewer-full"
-            }, [vnode]);
+            }, [
+                h(ImageViewer, {
+                    props
+                })
+            ]);
         }
     });
 
@@ -27,42 +19,48 @@ ImageViewer.newInstance = (properties = {}, props = {}) => {
     const imageViewer = Instance.$children[0];
 
     return {
-        show() {
-            imageViewer.visible = true;
+        visible(val) {
+            imageViewer.visible = !!val;
+            return this;
         },
-        remove(callback) {
-            imageViewer.visible = false;
-            setTimeout(() => {
-                imageViewer.$parent.$destroy();
-                const $imageViewer = document.getElementsByClassName("vue-image-viewer-full");
-                if($imageViewer.length) document.body.removeChild($imageViewer[0]);
-                callback();
-            }, 500);
+        images(data) {
+            if(data) imageViewer.images = data;
+            return this;
+        },
+        page(num) {
+            imageViewer.images = +num;
+            return this;
+        },
+        index(num) {
+            imageViewer.index = +num;
+            return this;
         },
         component: imageViewer
     };
 };
 
 let imageViewerInstance = null;
-
-const getImageViewerInstance = (render, props) => {
-    imageViewerInstance = imageViewerInstance || ImageViewer.newInstance({
-        render
-    }, props);
-
+const getImageViewerInstance = props => {
+    imageViewerInstance = imageViewerInstance || ImageViewer.newInstance(props);
     return imageViewerInstance;
 };
 
-ImageViewer.show = (props = {}) => {
-    getImageViewerInstance(props.render, props).show(props);
+getImageViewerInstance();
+
+ImageViewer.show = (params = {}) => {
+    getImageViewerInstance().images(params.images).visible(true);
 };
-
-ImageViewer.hide = props => {
-    if(!imageViewerInstance) return false;
-
-    getImageViewerInstance({}, props).remove(() => {
-        imageViewerInstance = null;
-    });
+ImageViewer.hide = () => {
+    getImageViewerInstance().visible(false);
+};
+ImageViewer.page = num => {
+    getImageViewerInstance().page(num);
+};
+ImageViewer.index = num => {
+    getImageViewerInstance().page(num);
+};
+ImageViewer.images = data => {
+    getImageViewerInstance().images(data);
 };
 
 export default ImageViewer;

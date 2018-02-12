@@ -55,8 +55,8 @@ export default {
 }
 ```
 ```
-<button @close="imageViewShow">open</button>
-<button @close="imageViewHide">close</button>
+<button @click="imageViewShow">open</button>
+<button @click="imageViewHide">close</button>
 ```
 
 # Props

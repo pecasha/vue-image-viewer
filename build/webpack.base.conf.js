@@ -63,6 +63,25 @@ module.exports = {
                     limit : 10000,
                     name : utils.assetsPath('fonts/[name].[ext]')
                 }
+            },
+            {
+                test : /\.css$/,
+                include : [
+                    /src/
+                ],
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'autoprefixer-loader'
+                ]
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader'
+                ]
             }
         ]
     }
