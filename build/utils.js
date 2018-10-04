@@ -13,10 +13,10 @@ exports.cssLoaders = function(options) {
     options = options || {}
 
     var cssLoader = {
-        loader : 'css-loader',
-        options : {
-            minimize : process.env.NODE_ENV === 'production',
-            sourceMap : options.sourceMap
+        loader: 'css-loader',
+        options: {
+            minimize: process.env.NODE_ENV === 'production',
+            sourceMap: options.sourceMap
         }
     }
 
@@ -25,9 +25,9 @@ exports.cssLoaders = function(options) {
         var loaders = [cssLoader]
         if(loader) {
             loaders.push({
-                loader : loader + '-loader',
-                options : Object.assign({}, loaderOptions, {
-                    sourceMap : options.sourceMap
+                loader: loader + '-loader',
+                options: Object.assign({}, loaderOptions, {
+                    sourceMap: options.sourceMap
                 })
             })
         }
@@ -36,8 +36,8 @@ exports.cssLoaders = function(options) {
         // (which is the case during production build)
         if(options.extract) {
             return ExtractTextPlugin.extract({
-                use : loaders,
-                fallback : 'vue-style-loader'
+                use: loaders,
+                fallback: 'vue-style-loader'
             })
         } else {
             return ['vue-style-loader'].concat(loaders)
@@ -46,13 +46,13 @@ exports.cssLoaders = function(options) {
 
     // https://vue-loader.vuejs.org/en/configurations/extract-css.html
     return {
-        css : generateLoaders(),
-        postcss : generateLoaders(),
-        less : generateLoaders('less'),
-        sass : generateLoaders('sass', {indentedSyntax : true}),
-        scss : generateLoaders('sass'),
-        stylus : generateLoaders('stylus'),
-        styl : generateLoaders('stylus')
+        css: generateLoaders(),
+        postcss: generateLoaders(),
+        less: generateLoaders('less'),
+        sass: generateLoaders('sass', {indentedSyntax: true}),
+        scss: generateLoaders('sass'),
+        stylus: generateLoaders('stylus'),
+        styl: generateLoaders('stylus')
     }
 }
 
@@ -63,8 +63,8 @@ exports.styleLoaders = function(options) {
     for(var extension in loaders) {
         var loader = loaders[extension]
         output.push({
-            test : new RegExp('\\.' + extension + '$'),
-            use : loader
+            test: new RegExp('\\.' + extension + '$'),
+            use: loader
         })
     }
     return output

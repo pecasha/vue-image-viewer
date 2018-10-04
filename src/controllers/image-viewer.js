@@ -1,39 +1,39 @@
 export default {
-    name : "imageViewer",
-    props : {
-        visible : {
-            type : Boolean,
-            default : false
+    name: "imageViewer",
+    props: {
+        visible: {
+            type: Boolean,
+            default: false
         },
-        index : {
-            type : Number,
-            default : 0
+        index: {
+            type: Number,
+            default: 0
         },
-        page : {
-            type : Number,
-            default : 0
+        page: {
+            type: Number,
+            default: 0
         },
-        images : {
-            type : Array,
-            default : []
+        images: {
+            type: Array,
+            default: []
         }
     },
     data() {
         return {
-            config : {
-                imgMaxWidth : window.innerWidth * .8,
-                imgMaxHeight : window.innerHeight * .8
+            config: {
+                imgMaxWidth: window.innerWidth * .8,
+                imgMaxHeight: window.innerHeight * .8
             },
-            imgStyle : {
-                width : "auto",
-                height : "auto"
+            imgStyle: {
+                width: "auto",
+                height: "auto"
             },
-            imgVisible : false,
-            imgIndex : 0,
-            imgPage : 0
+            imgVisible: false,
+            imgIndex: 0,
+            imgPage: 0
         }
     },
-    watch : {
+    watch: {
         "visible"() {
             if(this.images.length > 0) {
                 this.imgIndex = this.index;
@@ -47,8 +47,8 @@ export default {
         },
         "imgIndex"() {
             this.imgStyle = {
-                width : "auto",
-                height : "auto"
+                width: "auto",
+                height: "auto"
             };
             this.imgVisible = false;
             setTimeout(() => {
@@ -56,14 +56,14 @@ export default {
             });
         }
     },
-    methods : {
+    methods: {
         imgSize(recursionWidth, recursionHeight) {
             const _img = document.querySelector(".image-viewer-content > img");
             const _width = recursionWidth || _img.width,
                 _height = recursionHeight || _img.height;
 
             let imgSizeAuto = this.imgSizeAuto(_width, _height);
-            if(imgSizeAuto.width-10 > this.config.imgMaxWidth || imgSizeAuto.height-10 > this.config.imgMaxHeight) {
+            if(imgSizeAuto.width - 10 > this.config.imgMaxWidth || imgSizeAuto.height - 10 > this.config.imgMaxHeight) {
                 this.imgSize(imgSizeAuto.width, imgSizeAuto.height);
             } else {
                 this.imgStyle = imgSizeAuto;
@@ -76,8 +76,8 @@ export default {
             if(width > this.config.imgMaxWidth || height > this.config.imgMaxHeight) {
                 zoomSize = width - this.config.imgMaxWidth > height - this.config.imgMaxHeight ? this.config.imgMaxWidth / width : this.config.imgMaxHeight / height;
                 return {
-                    width : width * zoomSize,
-                    height : height * zoomSize
+                    width: width * zoomSize,
+                    height: height * zoomSize
                 }
             }
             return {

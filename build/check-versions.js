@@ -9,17 +9,17 @@ function exec(cmd) {
 
 var versionRequirements = [
     {
-        name : 'node',
-        currentVersion : semver.clean(process.version),
-        versionRequirement : packageConfig.engines.node
+        name: 'node',
+        currentVersion: semver.clean(process.version),
+        versionRequirement: packageConfig.engines.node
     },
 ]
 
 if(shell.which('npm')) {
     versionRequirements.push({
-        name : 'npm',
-        currentVersion : exec('npm --version'),
-        versionRequirement : packageConfig.engines.npm
+        name: 'npm',
+        currentVersion: exec('npm --version'),
+        versionRequirement: packageConfig.engines.npm
     })
 }
 

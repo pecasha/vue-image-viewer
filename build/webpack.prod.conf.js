@@ -12,13 +12,13 @@ var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
-    module : {
-        rules : utils.styleLoaders({
-            sourceMap : config.build.productionSourceMap,
-            extract : true
+    module: {
+        rules: utils.styleLoaders({
+            sourceMap: config.build.productionSourceMap,
+            extract: true
         })
     },
-    devtool : config.build.productionSourceMap ? '#source-map' : false,
+    devtool: config.build.productionSourceMap ? '#source-map' : false,
     output: {
         path: config.build.assetsRoot,
         publicPath: config.build.assetsPublicPath,
@@ -26,26 +26,26 @@ var webpackConfig = merge(baseWebpackConfig, {
         library: 'vueImageViewer',
         libraryTarget: 'umd'
     },
-    plugins : [
+    plugins: [
         // http://vuejs.github.io/vue-loader/en/workflow/production.html
         new webpack.DefinePlugin({
-            'process.env' : env
+            'process.env': env
         }),
         new webpack.optimize.UglifyJsPlugin({
-            compress : {
-                warnings : false
+            compress: {
+                warnings: false
             },
-            sourceMap : true
+            sourceMap: true
         }),
         // extract css into its own file
         new ExtractTextPlugin({
-            filename : "vue-image-viewer.css"
+            filename: "vue-image-viewer.css"
         }),
         // Compress extracted CSS. We are using this plugin so that possible
         // duplicated CSS from different components can be deduped.
         new OptimizeCSSPlugin({
-            cssProcessorOptions : {
-                safe : true
+            cssProcessorOptions: {
+                safe: true
             }
         })
     ]
@@ -56,15 +56,15 @@ if(config.build.productionGzip) {
 
     webpackConfig.plugins.push(
         new CompressionWebpackPlugin({
-            asset : '[path].gz[query]',
-            algorithm : 'gzip',
-            test : new RegExp(
+            asset: '[path].gz[query]',
+            algorithm: 'gzip',
+            test: new RegExp(
                 '\\.(' +
                 config.build.productionGzipExtensions.join('|') +
                 ')$'
             ),
-            threshold : 10240,
-            minRatio : 0.8
+            threshold: 10240,
+            minRatio: 0.8
         })
     )
 }
