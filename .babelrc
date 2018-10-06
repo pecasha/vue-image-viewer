@@ -3,30 +3,23 @@
         [
             "env",
             {
-                "modules": false,
+                "useBuiltIns": "entry",
                 "targets": {
                     "browsers": [
-                        "ie > 9",
-                        "ff > 4",
-                        "Chrome > 19"
+                        "Chrome >= 20",
+                        "iOS >= 9",
+                        "Android >= 4",
+                        "ie >= 9"
                     ]
                 }
             }
         ],
-        "stage-2"
+        "stage-0"
     ],
     "plugins": [
-        "transform-runtime"
-    ],
-    "env": {
-        "test": {
-            "presets": [
-                "env",
-                "stage-2"
-            ],
-            "plugins": [
-                "istanbul"
-            ]
-        }
-    }
+        "transform-runtime",
+        "syntax-dynamic-import",
+        "jsx-v-model",
+        "transform-vue-jsx"
+    ]
 }

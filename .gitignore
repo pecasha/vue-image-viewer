@@ -1,16 +1,27 @@
-# Created by .ignore support plugin (hsz.mobi)
-.idea
-.idea/
 .DS_Store
 node_modules/
-.project
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Editor directories and files
 .idea
+.vscode
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
+*.iml
+.ipr
+.iws
+*.diff
+*.patch
+*.bak
+*.zip
+*.rar
+*.7z
+.project
+.settings
+.*proj
+.svn/
+*.swp
+*.swo
+*.log

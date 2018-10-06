@@ -8,7 +8,6 @@
     import Vue from "vue";
 
     // import vueImageViewer from '../../lib/vue-image-viewer';
-    import "../../lib/vue-image-viewer.css";
     import vueImageViewer from '../../src/main.js';
 
     Vue.use(vueImageViewer);

@@ -1,6 +1,6 @@
-// http://eslint.org/docs/user-guide/configuring
 module.exports = {
     root: true,
+    parser: "vue-eslint-parser",
     parserOptions: {
         parser: "babel-eslint"
     },
@@ -9,16 +9,13 @@ module.exports = {
         es6: true
     },
     plugins: [
-        "html",
         "vue"
     ],
     extends: ["plugin:vue/essential"],
     globals: {
         "GLOBAL": false,
-        "vueObj": false,
         "process": false,
-        "log": false,
-        "WebViewJavascriptBridge": false
+        "log": false
     },
     /* ESLint 规则  */
     // error-开启规则,错误级别、warn-开启规则,警告级别、off-关闭规则
