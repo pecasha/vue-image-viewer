@@ -1,81 +1,81 @@
 {
-    "name": "vue-image-viewer",
-    "version": "1.0.2",
-    "description": "a simple and lightweight image viewer.",
-    "main": "lib/vue-image-viewer.js",
-    "scripts": {
-        "dev": "node build/dev-server.js",
-        "build": "node build/build.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/ChiHai-Chuck/vue-image-viewer.git"
-    },
-    "keywords": [
-        "vue",
-        "vue2",
-        "vue-image-viewer"
-    ],
-    "author": "ChiHai-Chuck <chuck@chihai.me>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/ChiHai-Chuck/vue-image-viewer/issues"
-    },
-    "homepage": "https://github.com/ChiHai-Chuck/vue-image-viewer#readme",
-    "dependencies": {
-        "vue": "^2.5.3"
-    },
-    "devDependencies": {
-        "autoprefixer": "^7.1.5",
-        "autoprefixer-loader": "^3.2.0",
-        "babel-core": "^6.26.0",
-        "babel-helper-vue-jsx-merge-props": "^2.0.2",
-        "babel-loader": "^7.1.2",
-        "babel-plugin-syntax-jsx": "^6.18.0",
-        "babel-plugin-transform-runtime": "^6.22.0",
-        "babel-plugin-transform-vue-jsx": "^3.5.0",
-        "babel-preset-env": "^1.6.1",
-        "babel-preset-es2015": "^6.24.1",
-        "babel-preset-stage-2": "^6.22.0",
-        "babel-register": "^6.26.0",
-        "chalk": "^2.2.0",
-        "connect-history-api-fallback": "^1.4.0",
-        "copy-webpack-plugin": "^4.1.1",
-        "css-loader": "^0.28.7",
-        "cssnano": "^3.10.0",
-        "eventsource-polyfill": "^0.9.6",
-        "express": "^4.16.2",
-        "extract-text-webpack-plugin": "^2.0.0",
-        "file-loader": "^0.11.1",
-        "friendly-errors-webpack-plugin": "^1.1.3",
-        "html-webpack-plugin": "^2.30.1",
-        "http-proxy-middleware": "^0.17.3",
-        "less": "^2.7.2",
-        "less-loader": "^4.0.5",
-        "opn": "^5.1.0",
-        "optimize-css-assets-webpack-plugin": "^2.0.0",
-        "ora": "^1.2.0",
-        "rimraf": "^2.6.2",
-        "semver": "^5.4.1",
-        "shelljs": "^0.7.6",
-        "url-loader": "^0.6.2",
-        "vue-loader": "^12.1.0",
-        "vue-style-loader": "^3.0.3",
-        "vue-template-compiler": "^2.5.2",
-        "webpack": "^2.6.1",
-        "webpack-bundle-analyzer": "^2.9.0",
-        "webpack-dev-middleware": "^1.12.0",
-        "webpack-hot-middleware": "^2.20.0",
-        "webpack-merge": "^4.1.0"
-    },
-    "engines": {
-        "node": ">= 4.0.0",
-        "npm": ">= 3.0.0"
-    },
-    "browserslist": [
-        "ie > 9",
-        "ff > 4",
-        "Chrome > 19"
-    ]
+  "name": "vue-image-viewer",
+  "version": "1.0.3",
+  "description": "a simple and lightweight image viewer.",
+  "main": "lib/vue-image-viewer.js",
+  "scripts": {
+    "dev": "node build/dev-server.js",
+    "build": "node build/build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChiHai-Chuck/vue-image-viewer.git"
+  },
+  "keywords": [
+    "vue",
+    "vue2",
+    "vue-image-viewer"
+  ],
+  "author": "ChiHai-Chuck <chuck@chihai.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChiHai-Chuck/vue-image-viewer/issues"
+  },
+  "homepage": "https://github.com/ChiHai-Chuck/vue-image-viewer#readme",
+  "dependencies": {
+    "vue": "^2.5.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.5",
+    "autoprefixer-loader": "^3.2.0",
+    "babel-core": "^6.26.0",
+    "babel-helper-vue-jsx-merge-props": "^2.0.2",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.22.0",
+    "babel-register": "^6.26.0",
+    "chalk": "^2.2.0",
+    "connect-history-api-fallback": "^1.4.0",
+    "copy-webpack-plugin": "^4.1.1",
+    "css-loader": "^0.28.7",
+    "cssnano": "^3.10.0",
+    "eventsource-polyfill": "^0.9.6",
+    "express": "^4.16.2",
+    "extract-text-webpack-plugin": "^2.0.0",
+    "file-loader": "^0.11.1",
+    "friendly-errors-webpack-plugin": "^1.1.3",
+    "html-webpack-plugin": "^2.30.1",
+    "http-proxy-middleware": "^0.17.3",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "opn": "^5.1.0",
+    "optimize-css-assets-webpack-plugin": "^2.0.0",
+    "ora": "^1.2.0",
+    "rimraf": "^2.6.2",
+    "semver": "^5.4.1",
+    "shelljs": "^0.7.6",
+    "url-loader": "^0.6.2",
+    "vue-loader": "^12.1.0",
+    "vue-style-loader": "^3.0.3",
+    "vue-template-compiler": "^2.5.2",
+    "webpack": "^2.6.1",
+    "webpack-bundle-analyzer": "^2.9.0",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.20.0",
+    "webpack-merge": "^4.1.0"
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "ie > 9",
+    "ff > 4",
+    "Chrome > 19"
+  ]
 }
