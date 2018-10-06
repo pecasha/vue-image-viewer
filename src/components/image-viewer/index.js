@@ -47,8 +47,8 @@ const getImageViewerInstance = props => {
 
 getImageViewerInstance();
 
-ImageViewer.show = (params = {}) => {
-    getImageViewerInstance().images(params.images).visible(true);
+ImageViewer.show = () => {
+    getImageViewerInstance().visible(true);
 };
 ImageViewer.hide = () => {
     getImageViewerInstance().visible(false);
@@ -57,7 +57,7 @@ ImageViewer.page = num => {
     getImageViewerInstance().page(num);
 };
 ImageViewer.index = num => {
-    getImageViewerInstance().page(num);
+    getImageViewerInstance().index(num);
 };
 ImageViewer.images = data => {
     getImageViewerInstance().images(data);

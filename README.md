@@ -14,54 +14,47 @@ npm install vue-image-viewer --save
 # Usage
 ```
 import imageViewer from "vue-image-viewer";
-import "vue-image-viewer/lib/vue-image-viewer.css";
 
 Vue.use(imageViewer);
 
 export default {
-    name : "demo",
-    components : {
-        imageViewer
-    },
     data() {
         return {
-            imageViewerParams : {
-                index : 0,
-                page : 0,
-                images : [
-                    {
-                        name : "image1",
-                        url : "/static/images/1.jpg"
-                    },
-                    {
-                        name : "image2",
-                        url : "/static/images/2.png"
-                    },
-                    {
-                        url : "/static/images/3.gif"
-                    }
-                ]
-            }
+            images : [
+                {
+                    name : "image1",
+                    url : "/static/images/1.jpg"
+                },
+                {
+                    name : "image2",
+                    url : "/static/images/2.png"
+                },
+                {
+                    url : "/static/images/3.gif"
+                }
+            ]
         }
     },
+    created() {
+        this.$imageViewer.images(this.images);
+    },
     methods : {
-        imageViewShow() {
-            this.$imageViewer.show(this.imageViewerParams);
-        },
-        imageViewHide() {
-            this.$imageViewer.hide();
+        imageView(index) {
+            this.$imageViewer.index(index);
+            this.$imageViewer.show();
         }
     }
 }
 ```
 ```
-<button @click="imageViewShow">open</button>
-<button @click="imageViewHide">close</button>
+<img v-for="(item,index) in images" :key="index" :src="item.url" @click="imageView(index)">
 ```
 
-# Props
-| Name | Type | Default | Description | Required |
-|---|---|---|---|---|
-| index | `Number` | `0` | Which image to show first. | No |
-| page | `Number` | `0` | The page of the thumbnail list. | No |
-| images | `Array` | `[]` | Image list. | Yes |
+# Events
+| Name | Params | Type | Description |
+|---|---|---|---|
+| show | - | - | Open picture viewer. |
+| hide | - | - | Close picture viewer. |
+| index | `num` | `Number` | Which image to show first. |
+| page | `num` | `Number` | The page of the thumbnail list. |
+| images | `data` | `Array` | Set image list. |

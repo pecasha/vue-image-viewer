@@ -1,15 +1,18 @@
 <template>
     <transition name="image-viewer-fade">
-        <div class="image-viewer" v-if="visible">
-            <i class="image-viewer-close icon-close" @click="visible=false"></i>
-            <div class="image-viewer-content">
+        <div class="image-viewer" v-show="visible">
+            <i class="image-viewer-close icon-close" @click="close"></i>
+            <div class="image-viewer-content" v-if="images.length">
                 <img :src="images[index].url" :alt="images[index].name?images[index].name:''" :width="imgStyle.width" :height="imgStyle.height" v-show="imgVisible">
                 <div class="image-viewer-info">
                     <p>{{images[index].name?images[index].name:""}}({{(index+1)+'/'+images.length}})</p>
-                    <a :href="images[index].url" target="_blank">下载原图</a>
+                    <div class="right">
+                        <i :class="`icon-${config.fullScreen?'cancel-':''}full-screen`" @click="fullScreen"></i>
+                        <i class="icon-download" @click="download(images[index].url)"></i>
+                    </div>
                 </div>
-                <div class="image-viewer-content-prev" @click="imgChange('prev')"><i class="icon-arrow-left"></i></div>
-                <div class="image-viewer-content-next" @click="imgChange('next')"><i class="icon-arrow-right"></i></div>
+                <div class="image-viewer-content-prev" @click="imgChange('prev')"></div>
+                <div class="image-viewer-content-next" @click="imgChange('next')"></div>
             </div>
             <div class="image-viewer-nav">
                 <div class="image-viewer-nav-prev" @click="pageChange('prev')"><i class="icon-arrow-left"></i></div>
@@ -31,7 +34,8 @@ export default {
         return {
             config: {
                 imgMaxWidth: window.innerWidth * .8,
-                imgMaxHeight: window.innerHeight * .8
+                imgMaxHeight: window.innerHeight * .8,
+                fullScreen: false
             },
             imgStyle: {
                 width: "auto",
@@ -46,7 +50,7 @@ export default {
     },
     watch: {
         visible(val) {
-            if(this.images.length > 0) {
+            if(this.images.length) {
                 if(val) document.body.style.overflow = "hidden";
                 else document.body.style.overflow = "";
 
@@ -68,10 +72,8 @@ export default {
         imgLoad(callback) {
             setTimeout(() => {
                 const $img = document.querySelector(".image-viewer-content > img");
-                let count = 0;
                 const timer = setInterval(() => {
-                    count++;
-                    if($img.complete || count) {
+                    if($img.complete) {
                         callback();
                         clearInterval(timer);
                     }
@@ -123,6 +125,32 @@ export default {
             if(action === "prev" && this.page * 8 >= 8) this.page--;
             else if(action === "next" && (this.page * 8 < length && length - this.page * 8 > 8)) this.page++;
             document.querySelector(".image-viewer-nav-thumb > div:first-child").style.marginLeft = -(document.querySelector(".image-viewer-nav-thumb").width * this.page) + "px";
+        },
+        close() {
+            if(this.config.fullScreen) this.fullScreen();
+            this.visible = false;
+        },
+        download(url) {
+            window.open(url);
+        },
+        fullScreen() {
+            if(this.config.fullScreen) {
+                if(document.exitFullscreen) document.exitFullscreen();
+                else if(document.webkitCancelFullScreen) document.webkitCancelFullScreen();
+                else if(document.mozCancelFullScreen) document.mozCancelFullScreen();
+                else if(document.msExitFullscreen) document.msExitFullscreen();
+
+                this.config.fullScreen = false;
+            } else {
+                const requestFullScreen = document.documentElement.requestFullScreen ||
+                    document.documentElement.webkitRequestFullScreen ||
+                    document.documentElement.mozRequestFullScreen ||
+                    document.documentElement.msRequestFullscreen;
+
+                if(requestFullScreen) requestFullScreen.call(document.documentElement);
+
+                this.config.fullScreen = true;
+            }
         }
     }
 }

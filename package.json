@@ -1,6 +1,6 @@
 {
     "name": "vue-image-viewer",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "description": "a simple and lightweight image viewer.",
     "main": "lib/vue-image-viewer.js",
     "scripts": {

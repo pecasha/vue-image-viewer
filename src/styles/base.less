@@ -1,0 +1,96 @@
+.overflow() { /* 超出元素的多余文字不换行，将多余部分替换成... */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* 多行文字省略 */
+.multi-overflow(@line) {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @line;
+}
+
+/* 背景色渐变 */
+.gradient(@colorStar, @colorEnd, @direction:right, @starX:0%, @starY:100%, @type:linear, @clip:background) {
+    background: ~"@{type}-gradient(to @{direction}, @{colorStar} @{starX}, @{colorEnd} @{starY})";
+    & when (@clip=text) {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
+}
+
+/* 阴影 */
+.shadow(@h, @v, @blur:0, @color) {
+    filter: drop-shadow(@h @v @blur @color);
+}
+
+/* 形状遮罩 */
+.mask(@image, @size:100% 100%) {
+    mask-image: url("~images/@{image}");
+    mask-origin: content-box;
+    mask-size: @size;
+}
+
+.clear-float() {
+    zoom: 1;
+    &:after {
+        display: block;
+        content: "";
+        height: 0;
+        visibility: hidden;
+        clear: both;
+    }
+}
+
+.absolute(@position) {
+    position: absolute;
+    margin: auto;
+    & when (@position=c), (@position=cm) {
+        left: 0;
+        right: 0;
+    }
+    & when (@position=m), (@position=cm) {
+        top: 0;
+        bottom: 0;
+    }
+}
+
+.align(@position, @direction:1) {
+    display: flex;
+    & when (@position=v-center), (@position=center) {
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+    }
+    & when (@position=h-center), (@position=center) {
+        justify-content: center;
+    }
+    & when (@position=top) {
+        align-items: flex-start;
+    }
+    & when (@position=bottom) {
+        align-items: flex-end;
+    }
+    & when (@position=left) {
+        justify-content: flex-start;
+    }
+    & when (@position=right) {
+        justify-content: flex-end;
+    }
+    & when (@position=h-space-between), (@position=v-space-between) {
+        justify-content: space-between;
+    }
+    & when (@position=h-space-around), (@position=v-space-around) {
+        justify-content: space-around;
+    }
+    & when (@position=v-space-between), (@position=v-space-around) {
+        flex-direction: column;
+    }
+    & when (iskeyword(@direction)) {
+        flex-direction: @direction;
+    }
+}
