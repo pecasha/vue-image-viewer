@@ -25,3 +25,4 @@ yarn-error.log*
 *.swp
 *.swo
 *.log
+.npmrc
