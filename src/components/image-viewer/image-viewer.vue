@@ -68,6 +68,12 @@ export default {
             this.imgLoad(this.imgSize);
         }
     },
+    created() {
+        window.onresize = () => {
+            const fullscreenEnabled = document.fullscreenEnabled || window.fullScreen || document.webkitIsFullScreen || document.msFullscreenEnabled;
+            if(!fullscreenEnabled) this.config.fullScreen = false;
+        };
+    },
     methods: {
         imgLoad(callback) {
             setTimeout(() => {

@@ -7,8 +7,8 @@
 <script>
     import Vue from "vue";
 
-    // import vueImageViewer from '../../lib/vue-image-viewer';
-    import vueImageViewer from '../../src/main.js';
+    import vueImageViewer from '../../lib/vue-image-viewer';
+    // import vueImageViewer from '../../src/main.js';
 
     Vue.use(vueImageViewer);
 
