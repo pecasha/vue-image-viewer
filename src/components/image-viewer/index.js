@@ -19,6 +19,11 @@ ImageViewer.newInstance = (props = {}) => {
     const imageViewer = Instance.$children[0];
 
     return {
+        config(options) {
+            for(let key of Object.keys(options)) {
+                imageViewer[key] = options[key];
+            }
+        },
         visible(val) {
             imageViewer.visible = !!val;
             return this;
@@ -47,8 +52,13 @@ const getImageViewerInstance = props => {
 
 getImageViewerInstance();
 
-ImageViewer.show = () => {
-    getImageViewerInstance().visible(true);
+ImageViewer.show = options => {
+    if(options) {
+        getImageViewerInstance().config(options);
+        getImageViewerInstance().visible(true);
+    } else {
+        getImageViewerInstance().visible(true);
+    }
 };
 ImageViewer.hide = () => {
     getImageViewerInstance().visible(false);

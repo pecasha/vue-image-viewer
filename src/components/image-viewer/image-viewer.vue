@@ -14,7 +14,8 @@
                 <div class="image-viewer-content-prev" @click="imgChange('prev')"></div>
                 <div class="image-viewer-content-next" @click="imgChange('next')"></div>
             </div>
-            <div class="image-viewer-nav">
+            <div class="image-viewer-nav"
+                 v-if="thumbnail">
                 <div class="image-viewer-nav-prev" @click="pageChange('prev')"><i class="icon-arrow-left"></i></div>
                 <div class="image-viewer-nav-main">
                     <div class="image-viewer-nav-thumb">
@@ -41,6 +42,7 @@ export default {
                 width: "auto",
                 height: "auto"
             },
+            thumbnail: true,
             visible: false,
             imgVisible: false,
             index: 0,
