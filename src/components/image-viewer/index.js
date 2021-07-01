@@ -23,6 +23,7 @@ ImageViewer.newInstance = (props = {}) => {
             for(let key of Object.keys(options)) {
                 imageViewer[key] = options[key];
             }
+            return this;
         },
         visible(val) {
             imageViewer.visible = !!val;

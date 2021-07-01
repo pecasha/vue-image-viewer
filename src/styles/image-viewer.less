@@ -1,19 +1,5 @@
+@import "fonts/icon";
 @import "base";
-
-@font-face {font-family: "vue-image-viewer-icon";
-    src: url('../assets/fonts/vue-image-viewer-icon.eot');
-    src: url('../assets/fonts/vue-image-viewer-icon.eot#iefix') format('embedded-opentype'),
-    url('../assets/fonts/vue-image-viewer-icon.ttf') format('truetype'),
-    url('../assets/fonts/vue-image-viewer-icon.svg#vue-image-viewer-icon') format('svg');
-}
-
-.icon-close:before { content: "\e7be"; }
-.icon-arrow-left:before { content: "\e7bf"; }
-.icon-arrow-right:before { content: "\e7c0"; }
-.icon-download:before { content: "\e7c1"; }
-.icon-cancel-full-screen:before { content: "\e7c2"; }
-.icon-full-screen:before { content: "\e7c3"; }
-
 
 .image-viewer-fade-enter-active,
 .image-viewer-fade-leave-active {
@@ -28,7 +14,7 @@
 .image-viewer {
     display: flex;
     flex-direction: column;
-    z-index: 1000;
+    z-index: 10000;
     position: fixed;
     top: 0;
     left: 0;

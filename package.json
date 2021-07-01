@@ -1,14 +1,17 @@
 {
     "name": "vue-image-viewer",
-    "version": "1.1.3",
+    "version": "1.1.6",
     "description": "a simple and lightweight image viewer.",
     "main": "lib/vue-image-viewer.js",
+    "types": "src/types.ts",
     "scripts": {
-        "build": "webpack --config build/webpack.config.js"
+        "build": "webpack --config build/webpack.config.js",
+        "up": "yarn upgrade-interactive --latest",
+        "iconfont": "gdk-base64-iconfont -f ./development/iconfont/download.zip -s ./src/styles/fonts/icon.less -n vue-image-viewer-icon -p img-v-icon- -d"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ChiHai-Chuck/vue-image-viewer.git"
+        "url": "https://github.com/ChiHai-Chuck/vue-image-viewer.git"
     },
     "keywords": [
         "vue",
@@ -21,7 +24,9 @@
         "url": "https://github.com/ChiHai-Chuck/vue-image-viewer/issues"
     },
     "homepage": "https://github.com/ChiHai-Chuck/vue-image-viewer#readme",
-    "dependencies": {},
+    "peerDependencies": {
+        "vue": "^2.5.17"
+    },
     "devDependencies": {
         "autoprefixer": "^7.2.6",
         "babel-core": "^6.26.3",
@@ -48,6 +53,7 @@
         "postcss-import": "^11.1.0",
         "postcss-loader": "^2.1.6",
         "postcss-url": "^7.3.2",
+        "typescript": "^4.3.4",
         "uglifyjs-webpack-plugin": "^1.3.0",
         "url-loader": "^0.6.2",
         "vue": "^2.5.17",
@@ -57,14 +63,7 @@
         "vue-template-compiler": "^2.5.17",
         "webpack": "^3.12.0"
     },
-    "engines": {
-        "node": ">= 8.0.0",
-        "npm": ">= 6.0.0"
-    },
     "browserslist": [
-        "Chrome >= 20",
-        "iOS >= 9",
-        "Android >= 4",
-        "ie >= 9"
+        "Chrome >= 20"
     ]
 }

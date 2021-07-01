@@ -1,28 +1,30 @@
 <template>
     <transition name="image-viewer-fade">
         <div class="image-viewer" v-show="visible">
-            <i class="image-viewer-close icon-close" @click="close"></i>
+            <i class="image-viewer-close img-v-icon-close" @click="close"></i>
             <div class="image-viewer-content" v-if="images.length">
                 <img :src="images[index].url" :alt="images[index].name?images[index].name:''" :width="imgStyle.width" :height="imgStyle.height" v-show="imgVisible">
                 <div class="image-viewer-info">
                     <p>{{images[index].name?images[index].name:""}}({{(index+1)+'/'+images.length}})</p>
                     <div class="right">
-                        <i :class="`icon-${config.fullScreen?'cancel-':''}full-screen`" @click="fullScreen"></i>
-                        <i class="icon-download" @click="download(images[index].url)"></i>
+                        <i :class="`img-v-icon-${config.fullScreen?'cancel-':''}full-screen`" @click="fullScreen"></i>
+                        <i class="img-v-icon-download" @click="download(images[index].url)"></i>
                     </div>
                 </div>
-                <div class="image-viewer-content-prev" @click="imgChange('prev')"></div>
-                <div class="image-viewer-content-next" @click="imgChange('next')"></div>
+                <template v-if="images.length>1">
+                    <div class="image-viewer-content-prev" @click="imgChange('prev')"></div>
+                    <div class="image-viewer-content-next" @click="imgChange('next')"></div>
+                </template>
             </div>
             <div class="image-viewer-nav"
                  v-if="thumbnail">
-                <div class="image-viewer-nav-prev" @click="pageChange('prev')"><i class="icon-arrow-left"></i></div>
+                <div class="image-viewer-nav-prev" @click="pageChange('prev')"><i class="img-v-icon-download"></i></div>
                 <div class="image-viewer-nav-main">
                     <div class="image-viewer-nav-thumb">
                         <div v-for="(il,i) in images" :key="i" :class="{active:i===index}" :alt="il.name?il.name:''" :title="il.name?il.name:''" :style="{backgroundImage:'url('+il.url+')'}" @click="imgChange(i)"></div>
                     </div>
                 </div>
-                <div class="image-viewer-nav-next" @click="pageChange('next')"><i class="icon-arrow-right"></i></div>
+                <div class="image-viewer-nav-next" @click="pageChange('next')"><i class="img-v-icon-arrow-right"></i></div>
             </div>
         </div>
     </transition>
