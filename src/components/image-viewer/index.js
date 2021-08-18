@@ -30,7 +30,10 @@ ImageViewer.newInstance = (props = {}) => {
             return this;
         },
         images(data) {
-            if(data) imageViewer.images = data;
+            if(data) {
+                imageViewer.images = [];
+                imageViewer.images = data;
+            }
             return this;
         },
         page(num) {
