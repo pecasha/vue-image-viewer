@@ -55,19 +55,19 @@ export default {
     watch: {
         visible(val) {
             if(this.images.length) {
-                if(val) document.body.style.overflow = "hidden";
-                else document.body.style.overflow = "";
-
+                if(val) {
+                    this.reset();
+                    document.body.style.overflow = "hidden";
+                } else {
+                    document.body.style.overflow = "";
+                }
                 this.imgLoad(this.imgSize);
             } else {
                 this.visible = false;
             }
         },
         index() {
-            this.imgStyle = {
-                width: "auto",
-                height: "auto"
-            };
+            this.reset();
             this.imgVisible = false;
             this.imgLoad(this.imgSize);
         }
@@ -79,6 +79,12 @@ export default {
         };
     },
     methods: {
+        reset() {
+            this.imgStyle = {
+                width: "auto",
+                height: "auto"
+            };
+        },
         imgLoad(callback) {
             setTimeout(() => {
                 const $img = document.querySelector(".image-viewer-content > img");
